@@ -1,4 +1,4 @@
-Plant Disease Prediction System
+## Plant Disease Prediction System
 
 This project is a Django-based web application for predicting plant diseases from leaf images using a Convolutional Neural Network (CNN) model.
 
