@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detection</title>
+
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .upload-section, .result-section {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .result-section {
+            border-left: 1px solid #ff0000;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="upload-section">
+            <h1>Upload Leaf Image</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Predict</button>
+            </form>
+        </div>
+        <div class="result-section">
+            <h1>Detection Result</h1>
+            {% if prediction %}
+                <p>Detection: {{ prediction }}</p>
+                <img src="{{ image.image.url }}" alt="Uploaded Image" style="max-width: 100%;">
+            {% else %}
+                <p>No Detection yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
